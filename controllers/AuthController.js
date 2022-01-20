@@ -47,10 +47,10 @@ module.exports = class AuthController {
 
 
         try {
-            await User.create(user)
+            const createdUser = await User.create(user)
             
             //initialize session]
-            req.session.userid =  user.id
+            req.session.userid =  createdUser.id
             
             req.flash ('message', 'Cadastro realizado com sucesso!')
             req.session.save(() => {
