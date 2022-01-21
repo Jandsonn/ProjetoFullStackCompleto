@@ -9,6 +9,37 @@ module.exports = class AuthController {
         res.render('auth/login')
     }
 
+    static async loginPost(req, res) {
+        const { email, password } = req.body
+
+        //find User
+        const user = await User.findOne({ where: { email: email } })
+        if (!user) {
+            req.flash('message', 'Usuário não encontrado!')
+            res.render('auth/login')
+
+            return
+        }
+
+        //check if password match
+        const passwordMatch = bcrypt.compareSync(password, user.password)
+
+        if (!passwordMatch) {
+            req.flash('message', 'Senha inválida!')
+            res.render('auth/login')
+
+            return
+        }
+
+        req.session.userid = user.id
+
+        req.flash('message', 'Autenticação realizada com sucesso!')
+        req.session.save(() => {
+            res.redirect('/')
+        })
+    }
+
+
     static register(req, res) {
         res.render('auth/register')
     }
@@ -48,17 +79,17 @@ module.exports = class AuthController {
 
         try {
             const createdUser = await User.create(user)
-            
+
             //initialize session]
-            req.session.userid =  createdUser.id
-            
-            req.flash ('message', 'Cadastro realizado com sucesso!')
+            req.session.userid = createdUser.id
+
+            req.flash('message', 'Cadastro realizado com sucesso!')
             req.session.save(() => {
                 res.redirect('/')
             })
         } catch (error) {
-          console.log(error);
-        
+            console.log(error);
+
         }
     }
 
