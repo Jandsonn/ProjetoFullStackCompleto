@@ -7,6 +7,25 @@ module.exports = class ToughtController {
     }
 
     static async dashboard(req, res) {
+        const userId = req.session.userid
+
+
+        const user = await User.findOne({
+            where: {
+                id: userId,
+            },
+            includ: Tought,
+            plain: true,
+        })
+        
+        //check if user exists
+        if (!user) {
+            res.redirect('/login')
+        }
+
+        const toughts = user.Toughts.map((result) => result.dataValues)
+        console.log(toughts)
+
         res.render('toughts/dashboard')
     }
 
@@ -32,7 +51,7 @@ module.exports = class ToughtController {
             })
 
         } catch (error) {
-            console.log('Aconteceu um erro aqui :('+ error)
+            console.log('Aconteceu um erro aqui :(' + error)
 
         }
 
