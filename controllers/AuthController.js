@@ -13,7 +13,7 @@ module.exports = class AuthController {
         const { email, password } = req.body
 
         //find User
-        const user = await User.findOne({ where: { email: email }})
+        const user = await User.findOne({ where: { email: email } })
         if (!user) {
             req.flash('message', 'Usuário não encontrado!')
             res.render('auth/login')
@@ -68,6 +68,7 @@ module.exports = class AuthController {
             return
         }
 
+
         //created a password
         const salt = bcrypt.genSaltSync(10)
         const hashedPassword = bcrypt.hashSync(password, salt)
@@ -78,10 +79,8 @@ module.exports = class AuthController {
             password: hashedPassword
         }
 
-
         try {
             const createdUser = await User.create(user)
-
             //initialize session]
             req.session.userid = createdUser.id
 
@@ -92,6 +91,16 @@ module.exports = class AuthController {
         } catch (error) {
             console.log(error);
 
+              //gerador de log pdf
+              var pdf = require("html-pdf");
+              pdf.create((error), {}).toFile("./logEmPdf.pdf", (err, res) => {
+                  if (err) {
+                      console.log(error)
+                  } else {
+                      console.log(res)
+                  }
+              })
+              //gerados de log pdf
         }
     }
 

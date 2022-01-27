@@ -23,21 +23,21 @@ const ToughtController = require('./controllers/ToughtController');
 
 
 
-//Aqui fica o template engine
+//Jandson here is the template engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
-//recebe as respostar do body
+// Here you receive the answers from the body understood
 app.use(
     express.urlencoded({
         extended: true
     })
 )
 
-//recebe os dados json
+//Here in this app it receives the jsons data, understand :D
 app.use(express.json())
 
-//session meddlewere
+//session meddlewere and temp session 
 app.use(
     session({
         name: "session",
@@ -83,7 +83,7 @@ app.use('/', authRoutes);
 app.get('/', ToughtController.showToughts)
 
 conn
-//.sync({ force: true })
+//.sync({ force: true })   //Not use if exists important Users saved XD
 .sync()
 .then(() => {
     app.listen(3000)
