@@ -13,7 +13,7 @@ module.exports = class AuthController {
         const { email, password } = req.body
 
         //find User
-        const user = await User.findOne({ where: { email: email } })
+        const user = await User.findOne({ where: { email: email }})
         if (!user) {
             req.flash('message', 'Usuário não encontrado!')
             res.render('auth/login')
@@ -31,9 +31,11 @@ module.exports = class AuthController {
             return
         }
 
+        //initializa session
         req.session.userid = user.id
 
         req.flash('message', 'Autenticação realizada com sucesso!')
+
         req.session.save(() => {
             res.redirect('/')
         })

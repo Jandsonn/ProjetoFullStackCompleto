@@ -14,7 +14,7 @@ module.exports = class ToughtController {
             where: {
                 id: userId,
             },
-            includ: Tought,
+            include: Tought,
             plain: true,
         })
         
@@ -41,7 +41,6 @@ module.exports = class ToughtController {
         }
 
         try {
-
             await Tought.create(tought)
 
             req.flash('message', 'Pensamento criado com sucesso!')

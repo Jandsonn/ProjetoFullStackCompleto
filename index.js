@@ -65,7 +65,7 @@ app.use(flash())
 app.use(express.static('public'))
 
 
-//set session res
+//set session to res
 app.use((req, res, next) => {
     if(req.session.userid){
         res.locals.session = req.session
