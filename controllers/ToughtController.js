@@ -20,10 +20,18 @@ module.exports = class ToughtController {
             res.redirect('/login')
         }
 
-        const toughts = user.Toughts.map((result) => result.dataValues)
-        console.log(toughts)
 
-        res.render('toughts/dashboard', { toughts })
+        const toughts = user.Toughts.map((result) => result.dataValues)
+
+        //Verifu value tarefa ex: if tarefa === 1 true else false 
+        let emptyToughts = false
+
+        if (toughts.length === 0) {
+            emptyToughts = true
+        }
+
+        console.log(toughts)
+        res.render('toughts/dashboard', { toughts, emptyToughts })
     }
 
     static createTought(req, res) {
@@ -52,12 +60,12 @@ module.exports = class ToughtController {
         }
     }
 
-    static async removeTought(req, res){
+    static async removeTought(req, res) {
         const id = req.body.id
         const UserId = req.session.userid
 
         try {
-            await Tought.destroy({where: {id: id, UserId: UserId}})
+            await Tought.destroy({ where: { id: id, UserId: UserId } })
 
             req.flash('message', 'Pensamento removido com sucesso!')
 
@@ -68,7 +76,7 @@ module.exports = class ToughtController {
         } catch (error) {
             console.log('Aconteceu um erro aqui :(' + error)
         }
-        
+
 
     }
 
