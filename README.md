@@ -9,4 +9,5 @@ as pesmissões de editar e excluir seus próprios posts. O projeto entrega sim e
 e valida o login desses usuários.
 
 "Jandson você fez esse projeto por quê?"
-Para por em práticas os meus conhecimentos em relação ao front-end e back-end, utilizando as seguintes tecnologias: nodejs, handlebars, HTML,CSS,JAVASCRIPT,Docker-compose. 
+Para por em práticas os meus conhecimentos em relação ao front-end e back-end, utilizando as seguintes tecnologias: nodejs, handlebars, HTML,CSS,JAVASCRIPT,DOCKER-COMPOSE . 
+
