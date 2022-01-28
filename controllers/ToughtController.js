@@ -22,7 +22,14 @@ module.exports = class ToughtController {
 
         const toughts = toughtsData.map((result) => result.get({ plain: true }))
 
-        res.render('toughts/home', { toughts })
+        let toughtsQty = toughts.length
+        
+        if(toughtsQty === 0) {
+            toughtsQty = false
+        }
+
+
+        res.render('toughts/home', { toughts, search, toughtsQty })
 
     }
     static async dashboard(req, res) {

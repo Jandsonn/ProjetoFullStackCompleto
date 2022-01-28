@@ -1,5 +1,15 @@
 <div class="home-header">
-  <h1>Todos os pensamentos</h1>
+  {{#if search}}
+    <h1>Você está buscando por <span>{{search}} ?</span></h1>
+    {{#if toughtsQty}}
+      <p>Foram encontrados <span>{{toughtsQty}}</span> Pensamentos </p>
+    {{else}}
+      <p>Nenhum pensamento foi encontrado para o termo:
+        <span>{{search}}</span></p>
+    {{/if}}
+  {{else}}
+    <h1>Conheçam vários pensamentos <span>Pensamento</span> </h1>
+  {{/if}}
   <form action="/" method="GET">
     <input
       type="text"
@@ -15,7 +25,7 @@
       <input type="hidden" name="order" value="new" />
       <button type="submit"> <i class="bi bi-arrow-up"></i> </button>
     </form>
-      <form action="/" method="GET">
+    <form action="/" method="GET">
       <input type="hidden" name="search" value="{{this.search}}" />
       <input type="hidden" name="order" value="old" />
       <button type="submit"> <i class="bi bi-arrow-down"></i> </button>
