@@ -226,7 +226,17 @@ input{
     margin: 1em;
     box-shadow: 2px 2px 6px 2px #f6982d;
 }
+.dashboard a {
+    color: #f6982d;
+}
 
+.dashboard p :hover {
+    color: #f6982d;
+    background-color: antiquewhite;
+    box-shadow: 1px 1px 8px 1px #f6982d;
+    font-size: 25px;
+    border-radius: 5px;
+}
 
 
 /*FOOTER*/
