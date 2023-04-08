@@ -8,4 +8,4 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /home/jandson/pasta:/var/lib/mysql mysql
+      - /home/anon/vl-docker:/var/lib/mysql mysql
