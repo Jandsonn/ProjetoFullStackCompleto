@@ -11,3 +11,21 @@ e valida o login desses usuários.
 "Jandson você fez esse projeto por quê?"
 Para por em práticas os meus conhecimentos em relação ao front-end e back-end, utilizando as seguintes tecnologias: nodejs, handlebars, HTML,CSS,JAVASCRIPT,DOCKER-COMPOSE . 
 
+How to running program!
+
+Para executar o programa será preciso verificar ou instalar o docker e docker-compose
+após ter o docker-compose em sua máquina basta usar os seguintes comandos:
+
+( docker-compose up ) Para subir aplicação, esses comandos devem ser executados direto no diretório onde está localizado o docker-compose ou na raiz do seu projeto.
+
+Após a execução do programa aguarde até que o terminei mostre os logs que foram executados, para verificar se ocorreu tudo corretamente.
+Após a executação do docker-compose, verifique os status do seu container. Usando o comando: docker ps.
+Esse comando listará os containers que têm em execução e que estão sendo executados.  Se usarmos o comando: docker ps -a   
+Esse comando verifica se existem containers parados e em status stop. Logo podemos combinar os seguintes comandos juntos:
+docker ps && docker ps -a  Esses comandos como explicado anteriormente fazem uma lista de containers que estão em modo stop, ou em execução. 
+
+Caso tenha ocasionado algum erro durante a execução da aplicação, verifique se os arquivos estão sendo executados como root um comando. Pois é essencial para que o programa execute com prioridades. 
+
+Após chegar até aqui, acredito que você tenha executado o projeto corretamente. Lembre sempre de deixar as bibliotecas padrões como versões padrões para que não ocorra erro na execução do projeto. 
+
+
